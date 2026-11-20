@@ -1,22 +1,28 @@
-print(&quot;========== ELECTRICITY BILL GENERATOR ==========&quot;)
-consumer_name = input(&quot;Enter Consumer Name: &quot;)
-consumer_id = input(&quot;Enter Consumer ID: &quot;)
-previous_reading = float(input(&quot;Enter Previous Meter Reading (kWh): &quot;))
-current_reading = float(input(&quot;Enter Current Meter Reading (kWh): &quot;))
-cost_per_unit = float(input(&quot;Enter Cost per Unit (₹): &quot;))
-units = current_reading - previous_reading
-energy_charge = units * cost_per_unit
-electricity_duty = energy_charge * 0.05
-fixed_charge = 100
-net_bill = energy_charge + electricity_duty + fixed_charge
+print("========== ELECTRICITY BILL GENERATOR ==========")
+consumer_name = input("Enter Consumer Name: ")
+consumer_id = input("Enter Consumer ID: ")
+previous_reading = float(input("Enter Previous Meter Reading (kWh): "))
+current_reading = float(input("Enter Current Meter Reading (kWh): "))
+cost_per_unit = float(input("Enter Cost per Unit (Rs.): "))
 
-print(&quot;\n============== ELECTRICITY BILL ==============&quot;)
-print(f&quot;Consumer Name : {consumer_name}&quot;)
-print(f&quot;Consumer ID : {consumer_id}&quot;)
-print(f&quot;Units Consumed : {units:.2f} kWh&quot;)
-print(f&quot;Energy Charge : ₹{energy_charge:.2f}&quot;)
-print(f&quot;Electricity Duty(5%) : ₹{electricity_duty:.2f}&quot;)
-print(f&quot;Fixed Meter Charge : ₹{fixed_charge:.2f}&quot;)
-print(&quot;----------------------------------------------&quot;)
-print(f&quot;Net Bill Amount : ₹{net_bill:.2f}&quot;)
-print(&quot;==============================================&quot;)
+if current_reading < previous_reading:
+    print("Current meter reading cannot be less than the previous reading.")
+elif cost_per_unit < 0:
+    print("Cost per unit cannot be negative.")
+else:
+    units = current_reading - previous_reading
+    energy_charge = units * cost_per_unit
+    electricity_duty = energy_charge * 0.05
+    fixed_charge = 100.0
+    net_bill = energy_charge + electricity_duty + fixed_charge
+
+    print("\n============== ELECTRICITY BILL ==============")
+    print(f"Consumer Name : {consumer_name}")
+    print(f"Consumer ID : {consumer_id}")
+    print(f"Units Consumed : {units:.2f} kWh")
+    print(f"Energy Charge : Rs.{energy_charge:.2f}")
+    print(f"Electricity Duty (5%) : Rs.{electricity_duty:.2f}")
+    print(f"Fixed Meter Charge : Rs.{fixed_charge:.2f}")
+    print("----------------------------------------------")
+    print(f"Net Bill Amount : Rs.{net_bill:.2f}")
+    print("==============================================")

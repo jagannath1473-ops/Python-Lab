@@ -1,6 +1,13 @@
 def fibonacci(n):
-if n == 0 or n == 1:
-return n return fibonacci(n - 1) + fibonacci(n - 2)
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
 
-n = int(input(&quot;Enter number of terms: &quot;))
-for i in range(n): print(fibonacci(i), end=&quot; &quot;)
+
+terms = int(input("Enter number of terms: "))
+if terms < 0:
+    print("Number of terms cannot be negative")
+else:
+    for i in range(terms):
+        print(fibonacci(i), end=" ")
+    print()

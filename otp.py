@@ -1,16 +1,15 @@
-n = int(input(&quot;Enter number of terms: &quot;))
+import random
 
-a = 0
-b = 1
 
-print(a, end=&quot; &quot;)
-print(b, end=&quot; &quot;)
+def generate_otp():
+    return random.randint(100000, 999999)
 
-for i in range(3, n + 1):
 
-c = a + b
+otp = generate_otp()
+print("Generated OTP:", otp)
+entered = int(input("Enter OTP: "))
 
-print(c, end=&quot; &quot;)
-
-a = b
-b = c
+if entered == otp:
+    print("OTP verified successfully")
+else:
+    print("Invalid OTP")
